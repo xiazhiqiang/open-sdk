@@ -1,0 +1,7 @@
+.dumi
+dist
+docs-dist
+es
+lib
+plugins
+public
