@@ -1,0 +1,31 @@
+{
+  "name": "open-sdk",
+  "version": "1.0.0",
+  "description": "前端开放 SDK 设计及实现 Demo",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "husky install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiazhiqiang/open-sdk.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xiazhiqiang/open-sdk/issues"
+  },
+  "homepage": "https://github.com/xiazhiqiang/open-sdk#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.5",
+    "@commitlint/config-conventional": "^17.6.5",
+    "husky": "^8.0.3"
+  }
+}
