@@ -6,5 +6,14 @@ export interface SDKProps {
    */
   map?: any;
 
+  data?: {
+    lng?: number;
+    lat?: number;
+    text?: string;
+    offsetX?: number;
+    offsetY?: number;
+    labelStyle?: any;
+  }[];
+
   [key: string]: any;
 }

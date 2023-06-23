@@ -84,8 +84,8 @@
   },
   "library": {
     "name": [
-      "datau-scene-sdk-tpl",
-      "1.0.1"
+      "comp2",
+      "1.0.0"
     ],
     "type": "umd"
   }

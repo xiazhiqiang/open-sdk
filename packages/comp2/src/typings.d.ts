@@ -149,6 +149,7 @@ declare interface Document {
 }
 declare let window: Window;
 declare let document: Document;
+declare let BMapGL: any;
 
 declare module '@ali/datavgi-gl-js';
 declare module '@ali/halo-engine-sdk';

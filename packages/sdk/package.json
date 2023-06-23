@@ -85,7 +85,7 @@
   "library": {
     "name": [
       "datau-scene-sdk-tpl",
-      "1.0.1"
+      "1.0.2"
     ],
     "type": "umd"
   }
