@@ -10,6 +10,7 @@ export default defineConfig({
     sidebar: false,
   },
   headScripts: [
+    // 引入百度 map SDK
     'https://api.map.baidu.com/api?v=1.0&type=webgl&ak=7m5Saw3tOxsXEYiUmFC3i5HTAbcmZxHw',
   ],
   plugins: ['datau-scene-docs-plugin', './plugins/index.ts'],

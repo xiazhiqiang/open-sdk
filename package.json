@@ -1,9 +1,15 @@
 {
-  "name": "open-sdk",
+  "private": true,
+  "name": "opensdk",
   "version": "1.0.0",
   "description": "前端开放 SDK 设计及实现 Demo",
-  "main": "index.js",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
+    "bootstrap": "yarn install --ignore-engines",
+    "build": "lerna run build --stream --sort",
+    "clean": "lerna clean && rm -rf package-lock.json yarn.lock node_modules **/package-lock.json **/yarn.lock",
     "prepare": "husky install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,18 +20,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xiazhiqiang/open-sdk.git"
+    "url": "git+https://github.com/xiazhiqiang/opensdk.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/xiazhiqiang/open-sdk/issues"
+    "url": "https://github.com/xiazhiqiang/opensdk/issues"
   },
-  "homepage": "https://github.com/xiazhiqiang/open-sdk#readme",
+  "homepage": "https://github.com/xiazhiqiang/opensdk#readme",
   "devDependencies": {
     "@commitlint/cli": "^17.6.5",
     "@commitlint/config-conventional": "^17.6.5",
-    "husky": "^8.0.3"
-  }
+    "husky": "^8.0.3",
+    "lerna": "^6.0.0"
+  },
+  "dependencies": {}
 }
