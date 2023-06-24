@@ -6,5 +6,7 @@ export interface SDKProps {
    */
   map?: any;
 
+  data?: {};
+
   [key: string]: any;
 }

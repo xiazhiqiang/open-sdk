@@ -1,15 +1,23 @@
 import jsHoc from '@/components/JSHoc';
+import CoreSDK from '@/components/MapSDK';
 import { SDKProps } from '@/interface';
-import React, { useEffect } from 'react';
+import Comp1 from 'comp1';
+import Comp2 from 'comp2';
+import React, { useEffect, useState } from 'react';
 import './index.less';
 
-// react 版本实现
+// SDK 渲染实现
 const SceneSDK = (props: SDKProps) => {
-  useEffect(() => {
-    console.log('scene props', props);
-  }, []);
+  const [data, setData] = useState();
 
-  return <div className="sdk-container">Demo</div>;
+  useEffect(() => {}, []);
+
+  return (
+    <CoreSDK containerId="container">
+      <Comp1 />
+      <Comp2 />
+    </CoreSDK>
+  );
 };
 
 // js 版本实现
