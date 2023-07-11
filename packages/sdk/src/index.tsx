@@ -3,13 +3,11 @@ import CoreSDK from '@/components/MapSDK';
 import { SDKProps } from '@/interface';
 import Comp1 from 'comp1';
 import Comp2 from 'comp2';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './index.less';
 
 // SDK 渲染实现
 const SceneSDK = (props: SDKProps) => {
-  const [data, setData] = useState();
-
   useEffect(() => {}, []);
 
   return (

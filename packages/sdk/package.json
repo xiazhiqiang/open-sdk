@@ -1,5 +1,5 @@
 {
-  "name": "datau-scene-sdk-tpl",
+  "name": "sdk",
   "version": "1.0.2",
   "description": "场景组件工程模板",
   "repository": "git@gitlab.alibaba-inc.com:datau/toolset.git",
@@ -46,7 +46,10 @@
       "prettier --parser=typescript --write"
     ]
   },
-  "dependencies": {},
+  "dependencies": {
+    "comp1": "1.0.0",
+    "comp2": "1.0.0"
+  },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
@@ -84,7 +87,7 @@
   },
   "library": {
     "name": [
-      "datau-scene-sdk-tpl",
+      "sdk",
       "1.0.2"
     ],
     "type": "umd"
