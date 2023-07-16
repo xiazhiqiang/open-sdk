@@ -9,7 +9,21 @@ import './index.less';
 export const SimpleDemo = () => {
   return (
     <div className="portal-demo">
-      <SDK />
+      <div className="controls">
+        <button className="primary" type="button" onClick={() => {}}>
+          设置点
+        </button>
+        <button className="primary" type="button" onClick={() => {}}>
+          设置线
+        </button>
+        <button className="primary" type="button" onClick={() => {}}>
+          设置面
+        </button>
+        <button type="button" onClick={() => {}}>
+          清除
+        </button>
+      </div>
+      <SDK></SDK>
     </div>
   );
 };

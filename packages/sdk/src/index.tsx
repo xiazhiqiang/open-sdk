@@ -13,7 +13,12 @@ const SceneSDK = (props: SDKProps) => {
   useEffect(() => {}, []);
 
   return (
-    <CoreSDK containerId="container">
+    <CoreSDK
+      containerId="container"
+      centerLat={39.915}
+      centerLng={116.404}
+      zoom={15}
+    >
       <Comp1 />
       <Comp2 />
     </CoreSDK>
