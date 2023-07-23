@@ -6,14 +6,21 @@ export interface SDKProps {
    */
   map?: any;
 
+  style?: any;
+
   data?: {
-    lng?: number;
-    lat?: number;
-    text?: string;
-    offsetX?: number;
-    offsetY?: number;
-    labelStyle?: any;
-  }[];
+    dataType: string;
+    staticData: ILabelItemData[];
+  };
 
   [key: string]: any;
+}
+
+export interface ILabelItemData {
+  lng?: number;
+  lat?: number;
+  text?: string;
+  offsetX?: number;
+  offsetY?: number;
+  labelStyle?: any;
 }
