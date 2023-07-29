@@ -69,6 +69,7 @@ const SDK = forwardRef((props: any, ref) => {
     [],
   );
 
+  // todo 自动注册ref
   return (
     <Root
       {...props}

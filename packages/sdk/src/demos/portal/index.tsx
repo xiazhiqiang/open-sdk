@@ -73,16 +73,34 @@ export default () => {
               sdkRef.current.map.clearOverlays();
             }
 
-            setComp1Params(null);
-            setComp2Params(null);
+            // 清除数据
+            setComp1Params({
+              data: { dataType: 'staticData', staticData: null },
+            });
+            setComp2Params({
+              data: { dataType: 'staticData', staticData: null },
+            });
           }}
         >
           清除
         </button>
+        <button
+          type="button"
+          onClick={() => {
+            console.log('sub comp1 ref', sdkRef.current.sdk.comp1.getData());
+            console.log('sub comp2 ref', sdkRef.current.comp2.getData());
+          }}
+        >
+          获取子组件数据
+        </button>
       </div>
 
       <SDK
-        ref={sdkRef}
+        ref={(el: any) => {
+          // 从sdk中透出的属性或方法
+          sdkRef.current.map = el && el.map ? el.map : null;
+          sdkRef.current.sdk = el;
+        }}
         mapView={{
           containerId: 'container',
           centerLng: 116.404, // 116.28,
@@ -93,7 +111,12 @@ export default () => {
         comp1={comp1Params || {}}
       >
         {/* 嵌入场景组件 */}
-        <Comp2 {...comp2Params} />
+        <Comp2
+          {...comp2Params}
+          ref={(el) => {
+            sdkRef.current.comp2 = el;
+          }}
+        />
         {/* 嵌入自定义组件 */}
         <CustomComp />
       </SDK>

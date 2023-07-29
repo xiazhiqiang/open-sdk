@@ -1,18 +1,31 @@
 import jsHoc from '@/components/JSHoc';
 import { PointsCoordinate, SDKProps } from '@/interface';
-import { useEffect, useState } from 'react';
+import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
 import './index.less';
 
 // 点线面实现
-const SceneSDK = (props: SDKProps) => {
+const SceneSDK = forwardRef((props: SDKProps, ref) => {
   const { map } = props;
   const { lineStyle = {}, polygonStyle = {} } = props.style || {};
   const [data, setData] = useState<any>({});
 
+  useImperativeHandle(
+    ref,
+    () => {
+      return {
+        getData: () => {
+          return data;
+        },
+        setData: (data: any) => setData(data),
+      };
+    },
+    [data],
+  );
+
   // 监听数据配置变化，更新data
   useEffect(() => {
     const { dataType, staticData } = props.data || {};
-    if (dataType === 'staticData' && staticData) {
+    if (dataType === 'staticData') {
       setData(staticData);
     }
   }, [props.data]);
@@ -88,7 +101,7 @@ const SceneSDK = (props: SDKProps) => {
   }, [map, data]);
 
   return null;
-};
+});
 
 // js 版本实现
 const SceneJSSDK = jsHoc(SceneSDK);
