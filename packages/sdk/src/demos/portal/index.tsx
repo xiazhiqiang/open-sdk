@@ -1,23 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import CustomComp from '@/components/CustomComp';
+import Comp2 from 'comp2';
+import React, { useRef, useState } from 'react';
 import SDK from '../../index';
-
 import './index.less';
 
-/**
- * 简单实现
- */
-export const SimpleDemo = () => {
-  const [map, setMap] = useState<any>(null);
-  const [data, setData] = useState<any>([]);
-
-  useEffect(() => {
-    let map = new BMapGL.Map('container'); // 创建地图实例
-    setMap(map);
-
-    let point = new BMapGL.Point(116.28, 40.049); // 创建点坐标
-    map.centerAndZoom(point, 18); // 初始化地图，设置中心点坐标和地图级别
-    map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放
-  }, []);
+export default () => {
+  const [comp1Params, setComp1Params] = useState<any>({});
+  const [comp2Params, setComp2Params] = useState<any>({});
+  const sdkRef = useRef<any>({});
 
   return (
     <div className="portal-demo">
@@ -26,25 +16,51 @@ export const SimpleDemo = () => {
           className="primary"
           type="button"
           onClick={() => {
-            setData([
-              {
-                lng: 116.2787,
-                lat: 40.0492,
-                offsetX: 30,
-                offsetY: -30,
-                text: '欢迎使用baidu map地图',
-                labelStyle: {
-                  color: 'red',
-                  borderRadius: '5px',
-                  borderColor: '#ccc',
-                  padding: '10px',
-                  fontSize: '16px',
-                  height: '30px',
-                  lineHeight: '30px',
-                  fontFamily: '微软雅黑',
+            setComp1Params({
+              data: {
+                dataType: 'staticData',
+                staticData: {
+                  type: 'points',
+                  coordinates: [
+                    { lng: 116.399, lat: 39.91 },
+                    { lng: 116.405, lat: 39.92 },
+                    { lng: 116.425, lat: 39.9 },
+                  ],
                 },
               },
-            ]);
+            });
+          }}
+        >
+          设置点
+        </button>
+        <button
+          className="primary"
+          type="button"
+          onClick={() => {
+            setComp2Params({
+              data: {
+                dataType: 'staticData',
+                staticData: [
+                  {
+                    lng: 116.2787,
+                    lat: 40.0,
+                    offsetX: 30,
+                    offsetY: -30,
+                    text: '欢迎使用baidu map地图',
+                    labelStyle: {
+                      color: 'red',
+                      borderRadius: '5px',
+                      borderColor: '#ccc',
+                      padding: '10px',
+                      fontSize: '16px',
+                      height: '30px',
+                      lineHeight: '30px',
+                      fontFamily: '微软雅黑',
+                    },
+                  },
+                ],
+              },
+            });
           }}
         >
           添加文字
@@ -52,18 +68,35 @@ export const SimpleDemo = () => {
         <button
           type="button"
           onClick={() => {
-            map.clearOverlays();
-            setData(null);
+            console.log('sdkRef', sdkRef.current);
+            if (sdkRef.current.map) {
+              sdkRef.current.map.clearOverlays();
+            }
+
+            setComp1Params(null);
+            setComp2Params(null);
           }}
         >
-          清除文字
+          清除
         </button>
       </div>
-      <div id="container">
-        <SDK map={map} data={data} />
-      </div>
+
+      <SDK
+        ref={sdkRef}
+        mapView={{
+          containerId: 'container',
+          centerLng: 116.404, // 116.28,
+          centerLat: 39.915, // 40.049,
+          zoom: 12,
+          scrollWheelZoom: true,
+        }}
+        comp1={comp1Params || {}}
+      >
+        {/* 嵌入场景组件 */}
+        <Comp2 {...comp2Params} />
+        {/* 嵌入自定义组件 */}
+        <CustomComp />
+      </SDK>
     </div>
   );
 };
-
-export default SimpleDemo;
