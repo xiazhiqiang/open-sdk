@@ -7,7 +7,8 @@ import './index.less';
  */
 export function SimpleDemo() {
   const [map, setMap] = useState<any>(null);
-  const [data, setData] = useState<any>({});
+  const [staticData, setStaticData] = useState<any>();
+  const [style, setStyle] = useState<any>({});
 
   useEffect(() => {
     let map = new BMapGL.Map('container'); // 创建地图实例
@@ -25,7 +26,7 @@ export function SimpleDemo() {
           className="primary"
           type="button"
           onClick={() => {
-            setData({
+            setStaticData({
               type: 'points',
               coordinates: [
                 { lng: 116.399, lat: 39.91 },
@@ -41,7 +42,7 @@ export function SimpleDemo() {
           className="primary"
           type="button"
           onClick={() => {
-            setData({
+            setStaticData({
               type: 'lines',
               coordinates: [
                 [
@@ -53,6 +54,9 @@ export function SimpleDemo() {
                   { lng: 116.425, lat: 39.9 },
                 ],
               ],
+            });
+            setStyle({
+              ...style,
               lineStyle: {
                 strokeColor: 'blue',
                 strokeWeight: 2,
@@ -67,7 +71,7 @@ export function SimpleDemo() {
           className="primary"
           type="button"
           onClick={() => {
-            setData({
+            setStaticData({
               type: 'polygons',
               coordinates: [
                 [
@@ -78,6 +82,9 @@ export function SimpleDemo() {
                   { lng: 116.41248, lat: 39.927893 },
                 ],
               ],
+            });
+            setStyle({
+              ...style,
               polygonStyle: {
                 fillColor: 'red',
                 strokeOpacity: 0,
@@ -91,14 +98,20 @@ export function SimpleDemo() {
           type="button"
           onClick={() => {
             map.clearOverlays();
-            setData(null);
+            setStaticData([]);
           }}
         >
           清除
         </button>
       </div>
       <div id="container">
-        <Comp map={map} data={data} />
+        <Comp
+          map={map}
+          data={{
+            dataType: 'staticData',
+            staticData,
+          }}
+        />
       </div>
     </div>
   );

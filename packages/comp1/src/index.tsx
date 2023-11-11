@@ -1,15 +1,36 @@
-import jsHoc from '@/components/JSHoc';
 import { PointsCoordinate, SDKProps } from '@/interface';
-import { useEffect } from 'react';
+import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
 import './index.less';
 
 // 点线面实现
-const SceneSDK = (props: SDKProps) => {
-  const { map, data = {} } = props;
-  const { coordinates = [], lineStyle, polygonStyle } = data || {};
+const SceneSDK = forwardRef((props: SDKProps, ref) => {
+  const { map } = props;
+  const { lineStyle = {}, polygonStyle = {} } = props.style || {};
+  const [data, setData] = useState<any>({});
+
+  useImperativeHandle(
+    ref,
+    () => {
+      return {
+        getData: () => {
+          return data;
+        },
+        setData: (data: any) => setData(data),
+      };
+    },
+    [data],
+  );
+
+  // 监听数据配置变化，更新data
+  useEffect(() => {
+    const { dataType, staticData } = props.data || {};
+    if (dataType === 'staticData') {
+      setData(staticData);
+    }
+  }, [props.data]);
 
   // 渲染多点
-  const renderPoints = () => {
+  const renderPoints = (coordinates: any = []) => {
     coordinates.forEach((point: PointsCoordinate) => {
       const marker = new BMapGL.Marker(new BMapGL.Point(point.lng, point.lat));
       map.addOverlay(marker);
@@ -17,8 +38,8 @@ const SceneSDK = (props: SDKProps) => {
   };
 
   // 渲染多条线
-  const renderLines = () => {
-    coordinates.forEach((line) => {
+  const renderLines = (coordinates: any = []) => {
+    coordinates.forEach((line: any = []) => {
       const linePoints: any = [];
       line.forEach((point: PointsCoordinate) => {
         linePoints.push(new BMapGL.Point(point.lng, point.lat));
@@ -29,8 +50,8 @@ const SceneSDK = (props: SDKProps) => {
     });
   };
 
-  const renderPolygons = () => {
-    coordinates.forEach((polygon) => {
+  const renderPolygons = (coordinates: any = []) => {
+    coordinates.forEach((polygon: any = []) => {
       const polygonPoints: any = [];
       polygon.forEach((point: PointsCoordinate) => {
         polygonPoints.push(new BMapGL.Point(point.lng, point.lat));
@@ -41,15 +62,7 @@ const SceneSDK = (props: SDKProps) => {
     });
   };
 
-  // 卸载
-  useEffect(() => {
-    return () => {
-      if (map) {
-        map.destroy();
-      }
-    };
-  }, [map]);
-
+  // 渲染
   useEffect(() => {
     if (
       !map ||
@@ -63,13 +76,13 @@ const SceneSDK = (props: SDKProps) => {
 
     switch (data.type) {
       case 'points':
-        renderPoints();
+        renderPoints(data.coordinates);
         break;
       case 'lines':
-        renderLines();
+        renderLines(data.coordinates);
         break;
       case 'polygons':
-        renderPolygons();
+        renderPolygons(data.coordinates);
         break;
 
       default:
@@ -78,10 +91,6 @@ const SceneSDK = (props: SDKProps) => {
   }, [map, data]);
 
   return null;
-};
-
-// js 版本实现
-const SceneJSSDK = jsHoc(SceneSDK);
+});
 
 export default SceneSDK;
-export { SceneSDK, SceneJSSDK };

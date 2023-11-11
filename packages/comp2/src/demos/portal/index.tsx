@@ -7,7 +7,7 @@ import './index.less';
  */
 export const SimpleDemo = () => {
   const [map, setMap] = useState<any>(null);
-  const [data, setData] = useState<any>([]);
+  const [staticData, setStaticData] = useState<any>();
 
   useEffect(() => {
     let map = new BMapGL.Map('container'); // 创建地图实例
@@ -16,6 +16,13 @@ export const SimpleDemo = () => {
     let point = new BMapGL.Point(116.28, 40.049); // 创建点坐标
     map.centerAndZoom(point, 18); // 初始化地图，设置中心点坐标和地图级别
     map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放
+
+    // 卸载
+    return () => {
+      if (map) {
+        map.destroy();
+      }
+    };
   }, []);
 
   return (
@@ -25,7 +32,7 @@ export const SimpleDemo = () => {
           className="primary"
           type="button"
           onClick={() => {
-            setData([
+            setStaticData([
               {
                 lng: 116.2787,
                 lat: 40.0492,
@@ -52,14 +59,20 @@ export const SimpleDemo = () => {
           type="button"
           onClick={() => {
             map.clearOverlays();
-            setData(null);
+            setStaticData(null);
           }}
         >
           清除文字
         </button>
       </div>
       <div id="container">
-        <SDK map={map} data={data} />
+        <SDK
+          map={map}
+          data={{
+            dataType: 'staticData',
+            staticData,
+          }}
+        />
       </div>
     </div>
   );

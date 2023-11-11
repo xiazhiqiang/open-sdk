@@ -1,0 +1,10 @@
+build
+.dumi
+dist
+docs-dist
+lib
+es
+output
+node_modules
+.DS_Store
+*.zip

@@ -6,11 +6,17 @@ export interface SDKProps {
    */
   map?: any;
 
-  data?: {
-    type?: string | 'points' | 'lines' | 'polygons';
-    coordinates?: PointsCoordinate[] | PointsCoordinate[][];
+  style?: {
     lineStyle?: any;
     polygonStyle?: any;
+  };
+
+  data?: {
+    dataType: string | 'staticData';
+    staticData?: {
+      type?: string | 'points' | 'lines' | 'polygons';
+      coordinates?: PointsCoordinate[] | PointsCoordinate[][];
+    };
   };
 
   [key: string]: any;
