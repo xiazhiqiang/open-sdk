@@ -41,5 +41,5 @@ yarn workspace sdk add comp2@1.0.0
 ## 运行某个 pkg 的 script
 
 ```sh
-yarn workspace <sdk> run <script>
+yarn workspace <pkg> run <script>
 ```
