@@ -1,4 +1,3 @@
-import jsHoc from '@/components/JSHoc';
 import { PointsCoordinate, SDKProps } from '@/interface';
 import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
 import './index.less';
@@ -63,15 +62,6 @@ const SceneSDK = forwardRef((props: SDKProps, ref) => {
     });
   };
 
-  // 卸载
-  useEffect(() => {
-    return () => {
-      if (map) {
-        map.destroy();
-      }
-    };
-  }, [map]);
-
   // 渲染
   useEffect(() => {
     if (
@@ -103,8 +93,4 @@ const SceneSDK = forwardRef((props: SDKProps, ref) => {
   return null;
 });
 
-// js 版本实现
-const SceneJSSDK = jsHoc(SceneSDK);
-
 export default SceneSDK;
-export { SceneSDK, SceneJSSDK };
