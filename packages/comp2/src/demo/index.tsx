@@ -1,5 +1,5 @@
+import Comp2 from 'comp2';
 import React, { useEffect, useState } from 'react';
-import SDK from '../../index';
 import './index.less';
 
 /**
@@ -66,7 +66,7 @@ export const SimpleDemo = () => {
         </button>
       </div>
       <div id="container">
-        <SDK
+        <Comp2
           map={map}
           data={{
             dataType: 'staticData',

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-export default function CustomComp(props) {
+export default function CustomComp(props: any) {
   const { map } = props;
   useEffect(() => {
     if (map) {

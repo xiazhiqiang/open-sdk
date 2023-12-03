@@ -1,7 +1,7 @@
 import CustomComp from '@/components/CustomComp';
 import Comp2 from 'comp2';
 import React, { useRef, useState } from 'react';
-import SDK from '../../index';
+import SDK from 'sdk';
 import './index.less';
 
 export default () => {

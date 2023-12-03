@@ -1,4 +1,3 @@
-import jsHoc from '@/components/JSHoc';
 import { PointsCoordinate, SDKProps } from '@/interface';
 import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
 import './index.less';
@@ -103,8 +102,5 @@ const SceneSDK = forwardRef((props: SDKProps, ref) => {
   return null;
 });
 
-// js 版本实现
-const SceneJSSDK = jsHoc(SceneSDK);
-
 export default SceneSDK;
-export { SceneSDK, SceneJSSDK };
+export { SceneSDK };

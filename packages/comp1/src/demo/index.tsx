@@ -1,5 +1,5 @@
+import Comp1 from 'comp1';
 import React, { useEffect, useState } from 'react';
-import Comp from '../../index';
 import './index.less';
 
 /**
@@ -105,7 +105,7 @@ export function SimpleDemo() {
         </button>
       </div>
       <div id="container">
-        <Comp
+        <Comp1
           map={map}
           data={{
             dataType: 'staticData',
