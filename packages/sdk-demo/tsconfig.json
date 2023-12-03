@@ -8,8 +8,8 @@
     "baseUrl": "./",
     "paths": {
       "@@/*": [".dumi/tmp/*"],
-      "sdk-demo": ["src"],
-      "sdk-demo/*": ["src/*", "*"],
+      "sdk": ["src"],
+      "sdk/*": ["src/*", "*"],
       "@/*": ["src/*"]
     }
   },

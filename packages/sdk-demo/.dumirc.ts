@@ -4,7 +4,7 @@ export default defineConfig({
   mfsu: false,
   outputPath: 'docs-dist',
   themeConfig: {
-    name: 'sdk-demo',
+    name: 'sdk',
   },
   headScripts: [
     'https://api.map.baidu.com/api?v=1.0&type=webgl&ak=7m5Saw3tOxsXEYiUmFC3i5HTAbcmZxHw',

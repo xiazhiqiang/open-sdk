@@ -1,10 +1,11 @@
 # opensdk
 
-前端开放 SDK 设计及实现 Demo
+前端组件渲染 SDK，sdk 实现详见`packages/sdk-core`，sdk 使用 Demo 详见`packages/sdk-demo`
 
 ## 初始化场景组件
 
 ```shell
+cd packages
 npm create ice [目录名] --template datau-scene-sdk-tpl
 ```
 
@@ -35,4 +36,10 @@ yarn workspaces info
 ```shell
 yarn workspace sdk add comp1@1.0.0
 yarn workspace sdk add comp2@1.0.0
+```
+
+## 运行某个 pkg 的 script
+
+```sh
+yarn workspace <pkg> run <script>
 ```
