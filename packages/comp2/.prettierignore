@@ -1,10 +1,2 @@
-node_modules
-.umi
-.umi-production
-build
-dist
-docs-dist
-es
-lib
-public
+/dist
 *.yaml

@@ -94,3 +94,4 @@ const SceneSDK = forwardRef((props: SDKProps, ref) => {
 });
 
 export default SceneSDK;
+export { SceneSDK };

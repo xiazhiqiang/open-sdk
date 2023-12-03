@@ -1,25 +1,40 @@
 # sdk-demo
 
-## 本地开发
+[![NPM version](https://img.shields.io/npm/v/sdk-demo.svg?style=flat)](https://npmjs.org/package/sdk-demo)
+[![NPM downloads](http://img.shields.io/npm/dm/sdk-demo.svg?style=flat)](https://npmjs.org/package/sdk-demo)
 
-```shell
-npm start
+A react library developed with dumi
+
+## Usage
+
+TODO
+
+## Options
+
+TODO
+
+## Development
+
+```bash
+# install dependencies
+$ yarn install
+
+# develop library by docs demo
+$ yarn start
+
+# build library source code
+$ yarn run build
+
+# build library source code in watch mode
+$ yarn run build:watch
+
+# build docs
+$ yarn run docs:build
+
+# check your project for potential problems
+$ yarn run doctor
 ```
 
-访问：http://localhost:8000/portal
+## LICENSE
 
-## 构建
-
-```shell
-npm run build
-```
-
-分别产出：
-
-- `docs-dist`：组件文档 Demo
-- `es`：组件 esmodule
-- `lib`：组件 commonjs
-- `dist`：组件 umd
-
-> 开发组件 Demo 及配置，详见[dumi 官网文档](https://d.umijs.org/config)
-> 组件构建及配置，详见[father 文档](https://github.com/umijs/father/blob/master/docs/config.md)
+MIT
