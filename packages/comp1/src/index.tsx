@@ -62,15 +62,6 @@ const SceneSDK = forwardRef((props: SDKProps, ref) => {
     });
   };
 
-  // 卸载
-  useEffect(() => {
-    return () => {
-      if (map) {
-        map.destroy();
-      }
-    };
-  }, [map]);
-
   // 渲染
   useEffect(() => {
     if (
