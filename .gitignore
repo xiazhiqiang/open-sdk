@@ -1,8 +1,10 @@
 node_modules
 output
 dist
+docs-dist
 es
 lib
 build
 yarn.lock
 .dumi
+*.zip
